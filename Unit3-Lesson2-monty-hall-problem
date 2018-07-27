@@ -1,0 +1,10 @@
+The Monty Hall problem illustrates that under the given situation, you're 2/3 more likely to get the desired prize
+if you switch away from the door you originally picked.
+
+You were originally 2/3 more likely to pick a door with a goat behind it, not the desired prize.  In this case, after
+Monty Hall eliminates the other goat door, he's basically showing you which door has the desired prize.  Probability says
+that 2/3 of the time, you'll get the desired prize by switching doors.
+
+Bayes' Theorem as it applies to the Monty Hall problem: If you've picked one door, what are the chances Monty will open
+either of the two other doors given the condition that he knows which door conceals the desired prize?  He'll never pick the
+door with the car behind it.
