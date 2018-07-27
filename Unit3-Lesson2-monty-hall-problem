@@ -7,4 +7,5 @@ that 2/3 of the time, you'll get the desired prize by switching doors.
 
 Bayes' Theorem as it applies to the Monty Hall problem: If you've picked one door, what are the chances Monty will open
 either of the two other doors given the condition that he knows which door conceals the desired prize?  He'll never pick the
-door with the car behind it.
+door with the car behind it.  That knowledge increases the probability you'll choose the door with the desired prize if
+you switch doors when you're given the chance.
