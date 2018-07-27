@@ -1,0 +1,29 @@
+Condition A: sufferer tested
+true-positive: 98% = .98
+false-negative: 2% = .02
+
+Condition B: Non-sufferer tested
+false-positive: 10% = .10
+true-negative: 90% = .90
+
+Actual incidence of total sufferers in population: .5% = .005
+
+Suppose that the test is now administered to a person whose disease status is unknown.
+Calculate the probability that the test will:
+
+	1.	Be positive
+	2.	Correctly diagnose a sufferer of Thripshaw's
+	3.	Correctly identify a non-sufferer of Thripshaw's
+	4.	Misclassify the person
+
+1. Probability test will be positive:
+.005 x .98 + .995 x .10 = .0049 + .0995 = .1044
+
+2. Correctly identify a sufferer of Thripshaw’s
+.98 probability that a sufferer is identified
+
+3.  Correctly identify a non-sufferer of Thripshaw’s
+.90 probability that a non-sufferer is identified
+
+4. Misclassify the person
+.02 x .005 + .10 x .995 =  .0001 + .0995 = .0996
