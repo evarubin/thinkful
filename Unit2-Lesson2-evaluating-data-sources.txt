@@ -1,0 +1,36 @@
+ What could be done to either adjust the analysis or reframe the questions so that you can answer them accurately?
+
+		Data Source: Amsterdam availability data scraped from AirBnB on December 24th.
+    Question: What are the popular neighborhoods in Amsterdam?
+    
+		Given that 12/14 is Christmas Eve day, rental trends may be biased due to the holiday.
+    
+    Even if another day (not on or near a holiday) was picked, it still would not be an answerable question
+    since any one day of the year might not provide data that identifies the popular neighborhoods
+    in Amsterdam (and what is meant by “popular”?).  Revised question: Which neighborhoods in Amsterdam
+    had the highest occupancy rates on Christmas Eve day during [year]?
+		
+		Data Source: Mental health services use on September 12, 2001 in San Francisco, CA and New York City, NY.
+    Question: How do patterns of mental health service use vary between cities?
+    
+		The day after the terrorist bombings in NY city would be an unusual event that would likely dramatically
+    affect service use.  That event would not affect SF in the same way.
+    
+		Service usage would have to be tracked over time to answer the question as it’s currently asked.
+    
+		Revised question could focus on change in service usage prior to 9/11 vs after 9/11 in New York:
+    How did mental health service use vary in New York prior to 9/11/2001 vs after 9/11/2001
+    (following the terrorist attack)?
+    
+		Data Source: Armenian Pub Survey.
+    Question: What are the most common reasons Armenians visit local pubs?
+    
+		The respondents for the survey are primarily students ranging in age from 16 - 23.  60% of respondents are women.
+    They are are also primarily (79%) from the capital.  Respondents are not a representative sample of “all Armenians”.
+    
+    Also, it’s not clear as to where the data collection took place (was it in a bar, in different bars, in a classroom, etc.?).
+    And, it’s not clear how the respondents were selected - were they all members of a class, friends, randomly selected
+    in front of bars, or?
+    
+		Revised question: What are the most common reasons why students I selected from my classes at University
+    choose to visit their local pubs?
