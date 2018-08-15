@@ -1,0 +1,325 @@
+# Fundamentals In Python: String Drills
+    
+def hello(firstname):
+    # Drill 1: Hello Grae
+    # Don't forget to use `return`.
+  greeting = "Hello, "
+  return greeting + firstname
+print (hello("Grae"))
+
+def quotable(name, quote):
+   # Drill 2: Quotable
+  return name + " said: " + "\"" + quote +"\""
+print (quotable("Grae", "Practice makes perfect"))
+
+def repeater(string, n):
+    # Drill 3: Repeater
+    return string * n
+print (repeater("Na", 16))
+
+def repeater(string, n):
+    # Drill 4: Repeater, Level II.
+    return '"{}" repeated {} times is:'.format(string, n) + "\"" + string * n + "\""
+print (repeater("yo", 3))
+print (repeater("WuB", 6))
+
+def greet_jedi(first, last):
+    # Drill 5: Jedi Greeter
+    return "Greetings, master " + last.capitalize()[:3] + first.capitalize()[:2]
+print (greet_jedi("beyonce", "knowles"))
+
+def area_code(message):
+    # Drill 6: area code
+    return message[-13:-10]
+print (area_code("The supplier's phone number is (555) 867-5309"))
+    
+def area_code(message):
+    # Drill 6: Area code
+    area_code = message[message.find("(")+1:message.find(")")]
+    return area_code
+message = "The supplier's phone number is (555) 867-5309"
+print(area_code(message))
+
+def format_poem1(poem1):
+    # Drill 7: Poem Formatter
+    import re
+    lines = re.split(r'(?<=\.) ', poem1)
+    for l in lines: print(l)
+
+poem1 = "Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex. Complex is better than complicated."
+
+print(format_poem1(poem1))
+
+def format_poem(poem):
+    # Drill 7: Poem Formatter.
+    sentences = poem.split('. ')
+    result = '.\n'.join(sentences)
+    return result
+
+poem = "Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex. Complex is better than complicated."
+
+print(format_poem(poem))
+
+# Fundamentals In Python: Number Drills
+
+def celsius_to_romer(temp):
+    # Drill 1: Celsius to Romer
+    romer = temp * (21/40) + 7.5
+    return romer
+
+print(celsius_to_romer(24))
+
+def is_divisible(wall_length, pixel_size):
+    # Drill 2: Is Divisible with no remainder (decimal)
+    return wall_length % pixel_size == 0
+
+print(is_divisible(4050, 27))
+    
+def guess_blue(blue_start, red_start, blue_pulled, red_pulled):
+    # Drill 3: Determine probability of drawing a blue marble
+    blue = blue_start - blue_pulled
+    red = red_start - red_pulled
+    return blue/(blue + red)
+    
+print(guess_blue(5,5,2,3))
+
+def box_capacity(length, width, height):
+    # Drill 4: Determine how many 16" square pizza boxes can fit in a warehouse
+    length_fit = int(length * 12/16)
+    width_fit = int(width * 12/16)
+    height_fit = int(height * 12/16)
+    return length_fit * width_fit * height_fit
+    
+print(box_capacity(20, 20, 20))  
+    
+def quadratic_formula(a, b, c):
+    # Drill 5: Quadratic formula = ax^2 + bx + c = 0
+    import math
+    root1 = (-b-math.sqrt(b**2-4*a*c))/(2*a) # Put -b + something something here.
+    root2 = (-b+math.sqrt(b**2-4*a*c))/(2*a) # Put -b - something something here.
+    return [root1, root2]
+print(quadratic_formula(2, 16, 1))
+
+# Fundamentals In Python: Number Drills
+
+def update_light(current):
+    # Drill 1: Traffic Light
+    if current == "green":
+      return "yellow"
+    elif current == "yellow":
+      return "red"
+    elif current == "red":
+      return "green"
+      
+print(update_light("green"))
+print(update_light("yellow"))
+print(update_light("red"))
+
+def take_umbrella(weather, rain_chance):
+    # Drill 2: Take Umbrella
+    if weather == "rainy":
+      return True
+    elif weather == "sunny" and rain_chance <= 0.50:
+      return False
+    elif weather == "sunny" and rain_chance > 0.50:
+      return True
+    elif weather == "cloudy" and rain_chance > 0.20:
+      return True
+    elif weather == "cloudy" and rain_chance <= 0.20:
+      return False
+
+print(take_umbrella("sunny", 0.51))
+
+def my_add(a, b):
+    # Drill 3: Graceful Addition
+    try:
+      result = a + b
+      return result
+    except TypeError:
+      return None
+  
+print(my_add(3,1))
+print(my_add(3,"this isn't a number"))
+
+def color_probability(color, texture):
+    # Drill 4: Red and Bumpy - my playing - didn't work
+    red_smooth = 1
+    red_bumpy = 4
+    yellow_smooth = 1
+    yellow_bumpy = 2
+    green_smooth = 1
+    green_bumpy = 1
+    smooth_total = red_smooth + yellow_smooth + green_smooth
+    bumpy_total = red_bumpy + yellow_bumpy + green_bumpy
+    
+    red_smooth_prob = red_smooth / smooth_total
+    red_bumpy_prob = red_bumpy / bumpy_total
+    yellow_smooth_prob = yellow_smooth / smooth_total
+    yellow_bumpy_prob = yellow_bumpy / bumpy_total
+    green_smooth_prob = green_smooth / smooth_total
+    green_bumpy_prob = green_bumpy / bumpy_total
+
+    if texture == "smooth" and color=='red':
+      return format(red_smooth_prob, ".2f")
+    if texture == "bumpy" and color=='red':
+      return format(red_bumpy_prob, ".2f")
+    if texture == "smooth" and color=='yellow':
+      return format(yellow_smooth_prob, ".2f")
+    if texture == "bumpy" and color=='yellow':
+      return format(yellow_bumpy_prob, ".2f")
+    if texture == "smooth" and color=='green':
+      return format(green_smooth_prob, ".2f")
+    if texture == "bumpy" and color=='green':
+      return format(green_bumpy_prob, ".2f")
+
+print(color_probability("red","bumpy"))
+
+def color_probability(color, texture):
+    # Drill 4: Red and Bumpy - my playing around - didn't work
+    red_smooth = 1
+    red_bumpy = 4
+    yellow_smooth = 1
+    yellow_bumpy = 2
+    green_smooth = 1
+    green_bumpy = 1
+    smooth_total = red_smooth + yellow_smooth + green_smooth
+    bumpy_total = red_bumpy + yellow_bumpy + green_bumpy
+    
+    result = {
+      "red_smooth_prob": red_smooth / smooth_total,
+      "red_bumpy_prob": red_bumpy / bumpy_total,
+      "yellow_smooth_prob": yellow_smooth / smooth_total,
+      "yellow_bumpy_prob": yellow_bumpy / bumpy_total,
+      "green_smooth_prob": green_smooth / smooth_total,
+      "green_bumpy_prob": green_bumpy / bumpy_total,
+    }
+
+    if texture == "smooth" and color=='red':
+      result == "red_smooth_prob"
+    if texture == "bumpy" and color=='red':
+      result == "red_bumpy_prob"
+    if texture == "smooth" and color=='yellow':
+      result == "yellow_smooth_prob"
+    if texture == "bumpy" and color=='yellow':
+      result == "yellow_bumpy_prob"
+    if texture == "smooth" and color=='green':
+      result == "green_smooth_prob"
+    if texture == "bumpy" and color=='green':
+      result == "green_bumpy_prob"
+    return str(result)
+
+print(color_probability("red","bumpy"))
+
+# Drill 4: Red and Bumpy - worked through with Jason - example
+
+#Defining the function
+def color_prob(texture, smooth_dict, bumpy_dict):
+    total_marbles = sum(smooth_dict.values()) + sum(bumpy_dict.values())
+    total_smooth_marbles = sum(smooth_dict.values())
+    total_bumpy_marbles = sum(bumpy_dict.values())
+
+    if(texture.lower() == 'smooth'):
+        for key, value in smooth_dict.items():
+            print("Your smooth color was %s. It's probability is %.2f"%(key, value/total_smooth_marbles))
+
+    elif(texture.lower() == 'bumpy'):
+        for key, value in bumpy_dict.items():
+            print("Your bumpy color was %s. It's probability is %.2f"%(key, value/total_bumpy_marbles))
+
+#Set the variables
+smooth_dict = {'red': 1, "yellow": 1, "green": 1}
+bumpy_dict = {'red': 4, "yellow": 2, "green": 1}
+
+#Calling the function
+color_prob("smooth", smooth_dict, bumpy_dict)
+color_prob("bumpy", smooth_dict, bumpy_dict)
+
+# Drill 5: Hacking P-Hackers
+def categorize_study(p_value, requirements):
+    #set the variables
+    bs_factor_dict = {6: 1, 5: 2, 4: 4, 3: 8, 2: 16, 1: 32, 0: 64}
+    
+    #match the requirements score with the number of req's satisfied/bs-factor score according to the rubric of bs_factor dict:
+    if requirements in bs_factor_dict:
+      #print(requirements, bs_factor_dict[requirements])
+      
+      #create a new dictionary with key = req met; value = bs_factor
+      #new_dict = {k: my_dict[k] for k in my_list if k in my_dict}
+      bs_factor_translated_dict = {requirements: bs_factor_dict[requirements]}
+      #print(bs_factor_translated_dict)
+      
+      #now figure out how to multiply the p-value with the bs_factor
+      for key, value in bs_factor_translated_dict.items():
+        product = p_value * value
+        #print(product)
+      if product < 0.05:
+        result = "Fine"
+      elif product >= 0.05 and product < 0.15:
+        result = "Needs review"
+      if product >= 0.15:
+        result = "Pants on fire"
+      if requirements == 0 and result == "Fine":
+        result = "Needs review"
+      return result
+
+print(categorize_study(0.01, 3))
+print(categorize_study(0.04, 6))
+print(categorize_study(0.0001, 0))
+print(categorize_study(0.012, 0))
+
+# Fundamentals In Python: Loops and Lists Drills
+
+# Drill 1: Longest word length
+def longest(words):
+  #set for loop to go through each item (word)
+  for word in words:
+    #return the length (len) of the longest word (max) in the list
+    #with the key (word) length
+    return len(max(words, key=len))
+#return the longest word length in a list:
+#https://stackoverflow.com/questions/21467762/return-len-of-the-longest-word-in-a-list
+
+# Drill 2: Grade Calculator
+def calculate_grade(scores):
+    print(scores)
+    # get mean of scores in list
+    mean_score = sum(scores) / len(scores)
+    print(mean_score)
+    # assign grades according to score
+    if   90 <= mean_score <= 100:
+      result = "A"
+    elif 80 <= mean_score < 90:
+      result = "B"
+    elif 70 <= mean_score < 80:
+      result = "C"
+    elif 60 <= mean_score < 70:
+      result = "D"
+    elif mean_score < 60:
+      result = "F"
+    print(result)
+    return result
+
+calculate_grade([92, 94, 99])
+
+
+# Drill 3: List of lists
+def process_data(data):
+    #i have no idea why you do this or why it works!
+    answer = 1
+    #go through each of list items in data (); use [0:] to go through to the end of range
+    for datum in data[0:]:
+       # subtract: datum (sublist) = first number[0] - second number[1] Ex: [2,5] = 2-5)
+      datum = datum[0] - datum[1]
+      answer = answer * datum
+    print(answer)
+    return answer
+
+process_data([[2, 5], [3, 4], [8, 7]])
+
+# Drill 4: Inverse Slicer
+def inverse_slice(items,a,b):
+    # Your code here.
+    print((items)[:a] + (items)[b:])
+    return ((items)[:a] + (items)[b:])
+
+inverse_slice([12, 14, 63, 72, 55, 24],2,4)
