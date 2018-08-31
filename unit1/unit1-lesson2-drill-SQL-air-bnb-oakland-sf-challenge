@@ -1,0 +1,105 @@
+AIR BNB Challenge: Oakland and SF
+Note: Questions 1 and 2 answered using Oakland data.  Question 3 answered using SF data since calendar data was not available for significant period of time during period of analysis.  SF data was missing 10 calendar days of data and is noted in question.
+
+1.  What's the most expensive listing? What else can you tell me about the listing?
+price per night:  "2800"
+name:	"Panoramic Sky"
+neighborhood: ”Panoramic Hill"
+bedrooms: ”5”
+beds: ”5”
+bathrooms: ”4”
+host: “Steffan"
+host since: ”2011-04-14"
+response time: “a few days or more"
+response rate: “30%"
+number of reviews: ”8”
+rating: ”93"
+
+--data is collected as of 2018-07-16
+--remove $ symbol, commas, and .00 and convert to integer to get MAX
+SELECT 
+MAX(CAST(REPLACE(REPLACE(REPLACE(price, '$', ''), ',', ''), '.00', '') as integer))
+cleaned_price,
+name,
+neighbourhood_cleansed,
+bedrooms,
+beds,
+bathrooms,
+host_name,
+host_since,
+host_response_time,
+host_response_rate,
+number_of_reviews,
+review_scores_rating
+
+FROM 
+listings
+
+ORDER BY cleaned_price DESC;
+——
+
+2. What neighborhoods seem to be the most popular?
+Top 3 between 2017-07-14 - 2018-07-15:
+Longfellow: 1518
+Bushrod: 1345
+Prescott: 1148
+
+--data is collected as of 2018-07-16 and includes data from: 2017-07-14 - 2018-07-15
+-- use # of reviews as a proxy for popularity.
+--more reviews per neighborhood = more popular neighborhood.
+--air bnb uses ratings metric to estimate occupancy rates per site
+--NOTE: ratings are limited to time period: 2017-07-14 - 2018-07-15
+--NOTE: listings are limited to "hosting_since" date beginning: 2017-07-14 or earlier
+-- limits impact of influx of new listings into neighborhoods, but does’t account for impact of listings leaving air bnb
+
+SELECT
+listings.neighbourhood_cleansed listing_neighborhood,
+count(*) count_of_neighborhood_reviews
+
+FROM
+reviews
+
+JOIN
+listings
+
+ON
+reviews.listing_id = listings.id
+
+-- ratings within specified time period and listings hosted prior to specified cut off date
+WHERE 
+reviews.date >= '2017-07-14' AND reviews.date <= '2018-07-15'
+AND
+listings.host_since <= '2017-07-14'
+
+GROUP BY listings.neighbourhood_cleansed
+LIMIT 3
+—
+
+3.  What time of year is the cheapest time to go to your city? What about the busiest?
+Cheapest time of year: January
+Most expensive time of year: July and August
+Busiest time of year: March
+
+--data is collected as of 2018-01-10
+--missing data for 2018-01-01 - 2018-01-09 may account for why January is "cheapest" time of year
+--but does seem consistent with tourism patterns of travel
+--data includes actual paid for nights, but also includes reservations for upcoming year that could be changed
+-- or cancelled prior to those dates
+
+SELECT 
+strftime('%m', date) as 'Month',
+count(*) nights_paid_for,
+available,
+SUM(CAST(REPLACE(REPLACE(REPLACE(price, '$', ''), ',', ''), '.00', '') as integer)) monthly_spent_by_customers,
+SUM(CAST(REPLACE(REPLACE(REPLACE(price, '$', ''), ',', ''), '.00', '') as integer)) / count(*) avg_spent_per_night
+
+FROM 
+calendar_sf
+
+WHERE 
+date <= '2018-12-31' 
+AND 
+available = 't'
+
+GROUP BY Month
+ORDER BY nights_paid_for DESC
